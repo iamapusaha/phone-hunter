@@ -11,6 +11,16 @@ const loadPhones = async (search) => {
 const displayPhones = (phones) => {
     const phoneContainer = document.getElementById('card-container');
     phoneContainer.textContent = '';
+    // display 20 phones only 
+    phones = phones.slice(0, 20)
+    // display no phone found 
+    const noPhone = document.getElementById('no-phone')
+    if (phones.length == 0) {
+        noPhone.classList.remove('d-none')
+    } else {
+        noPhone.classList.add('d-none')
+    }
+
     phones.forEach(phone => {
         console.log(phone)
         const phoneCard = document.createElement('div')
