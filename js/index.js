@@ -35,13 +35,23 @@ const displayPhones = (phones) => {
                         </div>
                     </div>
     `
-        phoneContainer.appendChild(phoneCard)
+        phoneContainer.appendChild(phoneCard);
     });
+    toggleSpinner(false);
 }
 document.getElementById('btn-search').addEventListener('click', function () {
     const inputField = document.getElementById('input-field');
-
+    toggleSpinner(true);
     const inputValue = inputField.value;
     inputField.value = '';
     loadPhones(inputValue);
 })
+
+const toggleSpinner = (isLoading) => {
+    const spinnerSection = document.getElementById('load-spinner')
+    if (isLoading) {
+        spinnerSection.classList.remove('d-none')
+    } else {
+        spinnerSection.classList.add('d-none')
+    }
+}
